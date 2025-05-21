@@ -58,31 +58,11 @@
 
     <h2>كود الاستراتيجية:</h2>
     <div class="code">
-//@version=5
-strategy("EMA9 EMA18 + RSI - Long & Short", overlay=true)
+للحصول على كود الاستراتيجيه 
+     
+      راسلني على انستقرام مع ارفاق ايصال الدفع على هذا الحساب 
+@dr_scalper1
 
-ema9 = ta.ema(close, 9)
-ema18 = ta.ema(close, 18)
-rsi = ta.rsi(close, 14)
-
-longCondition = ta.crossover(ema9, ema18) and rsi > 50
-if (longCondition)
-    strategy.entry("Buy", strategy.long)
-
-closeLong = ta.crossunder(ema9, ema18) or rsi < 50
-if (closeLong)
-    strategy.close("Buy")
-
-shortCondition = ta.crossunder(ema9, ema18) and rsi < 50
-if (shortCondition)
-    strategy.entry("Sell", strategy.short)
-
-closeShort = ta.crossover(ema9, ema18) or rsi > 50
-if (closeShort)
-    strategy.close("Sell")
-
-plot(ema9, color=color.blue, title="EMA 9")
-plot(ema18, color=color.orange, title="EMA 18")
     </div>
   </div>
 </body>
