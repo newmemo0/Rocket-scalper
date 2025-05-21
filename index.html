@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>صاروخ المضاربة - استراتيجية EMA + RSI</title>
+  <style>
+    body {
+      font-family: Tahoma, sans-serif;
+      background-color: #111;
+      color: #fff;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+    .container {
+      padding: 30px;
+      max-width: 800px;
+      margin: auto;
+    }
+    img {
+      max-width: 100%;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+    .button {
+      background-color: #28a745;
+      color: white;
+      padding: 15px 30px;
+      text-decoration: none;
+      font-size: 18px;
+      border-radius: 8px;
+      display: inline-block;
+      margin-top: 20px;
+    }
+    .code {
+      background-color: #222;
+      color: #0f0;
+      padding: 20px;
+      text-align: left;
+      overflow-x: auto;
+      border-radius: 8px;
+      margin-top: 30px;
+      direction: ltr;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>صاروخ المضاربة - استراتيجية تداول احترافية</h1>
+    <p>استراتيجية تعتمد على تقاطع المتوسطات EMA9 و EMA18 مع مؤشر RSI.</p>
+    <p>تعمل في الاتجاهين (شراء وبيع) بدقة عالية.</p>
+    <img src="rocket.png" alt="صاروخ المضاربة">
+    <a class="button" href="https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=flexnoot@gmail.com&item_name=صاروخ المضاربة - Pine Script&amount=99.00&currency_code=USD" target="_blank">اشترِ الآن بـ 99$</a>
+
+    <h2>ماذا ستحصل بعد الدفع؟</h2>
+    <p>ستتلقى الكود الكامل عبر الإيميل خلال 24 ساعة أو تُمنح صلاحية دعوة خاصة على TradingView.</p>
+
+    <h2>كود الاستراتيجية:</h2>
+    <div class="code">
+//@version=5
+strategy("EMA9 EMA18 + RSI - Long & Short", overlay=true)
+
+ema9 = ta.ema(close, 9)
+ema18 = ta.ema(close, 18)
+rsi = ta.rsi(close, 14)
+
+longCondition = ta.crossover(ema9, ema18) and rsi > 50
+if (longCondition)
+    strategy.entry("Buy", strategy.long)
+
+closeLong = ta.crossunder(ema9, ema18) or rsi < 50
+if (closeLong)
+    strategy.close("Buy")
+
+shortCondition = ta.crossunder(ema9, ema18) and rsi < 50
+if (shortCondition)
+    strategy.entry("Sell", strategy.short)
+
+closeShort = ta.crossover(ema9, ema18) or rsi > 50
+if (closeShort)
+    strategy.close("Sell")
+
+plot(ema9, color=color.blue, title="EMA 9")
+plot(ema18, color=color.orange, title="EMA 18")
+    </div>
+  </div>
+</body>
+</html>
